@@ -18,24 +18,24 @@ import br.com.adrian.olympicgames.api.entities.Modalidade;
 @Transactional(readOnly = true)
 @NamedQueries({
 	@NamedQuery(name = "CompeticaoRepository.findByModalidadeIdOrLocalId",
-			    query = "SELECT * FROM competicao comp"),
-//				  	  + " WHERE comp.id_modalidade = :modalidadeId "
-//				  	  + "   AND comp.id_local = :localId "
-//				  	  + "   AND comp.dt_inicio "
-//				  	  + "   BETWEEN :dataInicio AND :dataTermino"),
+			    query = "SELECT * FROM competicao comp"
+				  	  + " WHERE comp.id_modalidade = :modalidadeId "
+				  	  + "   AND comp.id_local = :localId "
+				  	  + "   AND comp.dt_inicio "
+				  	  + "   BETWEEN :#{#dtInicio} AND :#{#dtTermino}"),
 	
 	@NamedQuery(name = "CompeticaoRepository.findByLocalIdOrDataInicio",
 	            query = "SELECT COUNT(*) "
 				  	  + "  FROM competicao comp"
 				  	  + " WHERE comp.id_local = :localId "
-				  	  + "   AND TRUNC(comp.dt_inicio) = TRUNC(:dataInicio)")
+				  	  + "   AND TRUNC(comp.dt_inicio) = TRUNC(:dtInicio) ")
 })
 public interface CompeticaoRepository extends JpaRepository<Competicao, Long>{
 	
 	Optional<Competicao> findByModalidadeIdOrLocalId(@Param("modalidadeId") Long modalidadeId,
 			                                         @Param("localId") Long localId,
-			                                         @Param("dataInicio") Date dataInicio,
-			                                         @Param("dataTermino") Date dataTermino);
+			                                         @Param("dtInicio") Date dtInicio,
+			                                         @Param("dtTermino") Date dtTermino);
 	
 	Integer findByLocalIdOrDataInicio(@Param("localId") Long localId,
 			                          @Param("dataInicio") Date dataInicio);

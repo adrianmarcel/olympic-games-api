@@ -67,7 +67,7 @@ public class Competicao implements Serializable {
 		this.local = local;
 	}
 
-	@Column(name = "data_inicio", nullable = false)
+	@Column(name = "dt_inicio", nullable = false)
 	public Date getDataInicio() {
 		return dataInicio;
 	}
@@ -76,7 +76,7 @@ public class Competicao implements Serializable {
 		this.dataInicio = dataInicio;
 	}
 	
-	@Column(name = "data_termino", nullable = false)
+	@Column(name = "dt_termino", nullable = false)
 	public Date getDataTermino() {
 		return dataTermino;
 	}
