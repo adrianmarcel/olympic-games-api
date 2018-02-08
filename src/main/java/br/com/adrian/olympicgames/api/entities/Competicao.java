@@ -3,6 +3,7 @@ package br.com.adrian.olympicgames.api.entities;
 import java.io.Serializable;
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -46,8 +47,8 @@ public class Competicao implements Serializable {
 		this.id = id;
 	}
 
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name = "id_modalidade", nullable = false)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name = "id_modalidade")
 	public Modalidade getModalidade() {
 		return modalidade;
 	}
@@ -56,8 +57,8 @@ public class Competicao implements Serializable {
 		this.modalidade = modalidade;
 	}
 
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name = "id_local", nullable = false)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name = "id_local")
 	public Local getLocal() {
 		return local;
 	}
@@ -84,8 +85,8 @@ public class Competicao implements Serializable {
 		this.dataTermino = dataTermino;
 	}
 
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name = "id_pais_1", nullable = false)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name = "id_pais_1")
 	public Pais getPais1() {
 		return pais1;
 	}
@@ -94,8 +95,8 @@ public class Competicao implements Serializable {
 		this.pais1 = pais1;
 	}
 
-	@ManyToOne(fetch=FetchType.EAGER)
-	@JoinColumn(name = "id_pais_2", nullable = false)
+	@ManyToOne(fetch=FetchType.EAGER, cascade=CascadeType.ALL)
+	@JoinColumn(name = "id_pais_2")
 	public Pais getPais2() {
 		return pais2;
 	}
